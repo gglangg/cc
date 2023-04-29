@@ -1,0 +1,1 @@
+python3 train.py -l 0.001
