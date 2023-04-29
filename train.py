@@ -27,10 +27,10 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
-train_img = 'data/FA/train/imgs/'
-train_mask = 'data/FA/train/masks/'
-val_img = 'data/FA/val/imgs/'
-val_mask = 'data/FA/val/masks/'
+train_img = 'data/FA/fovea/train/img/'
+train_mask = 'data/FA/fovea/train/mask/'
+val_img = 'data/FA/fovea/test/img/'
+val_mask = 'data/FA/fovea/test/mask/'
 
 dir_checkpoint = 'checkpoints/'
 best_dsc = 0.0
@@ -144,7 +144,7 @@ def train_net(net,
             best_epoch = epoch
             min_loss = epoch_loss
             best_model_params = copy.deepcopy(net.state_dict())
-
+            print('best_dsc : ', best_dsc, 'best_epoch : ', best_epoch, 'min_loss : ', min_loss)
     torch.save(best_model_params, f'epoch_{best_epoch}_dsc_{best_dsc:.4f}_best_val_dcsc_UnetwithResnet34_imgsize496_epoch20.pth')
     print("Best model name : " + f'epoch_{best_epoch}_dsc_{best_dsc:.4f}_best_val_dcsc_UnetwithResnet34_imgsize496_epoch20.pth')
     
